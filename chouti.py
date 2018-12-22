@@ -20,11 +20,13 @@ login_dic = {
 headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
 }
-
+#get访问主页
 rsp1 = requests.get(url = 'https://dig.chouti.com/', headers = headers)
+#抓取返回的cookies对象，通过get_dict()获取cookies字典
 cook_1 = rsp1.cookies.get_dict()
-
+#POST访问登录页，发送数据并带上第一次返回的coodies
 rsp2 = requests.post(url = login, headers = headers, data = login_dic, cookies = cook_1)
-
+#POST发送点赞请求
 vote = requests.post(url = 'https://dig.chouti.com/link/vote?linksId=23851466', headers = headers, cookies = {'gpsd': cook_1.get('gpsd')})
+#打印返回数据
 print(vote.text)
