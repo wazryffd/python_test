@@ -27,6 +27,6 @@ cook_1 = rsp1.cookies.get_dict()
 #POST访问登录页，发送数据并带上第一次返回的coodies
 rsp2 = requests.post(url = login, headers = headers, data = login_dic, cookies = cook_1)
 #POST发送点赞请求
-vote = requests.post(url = 'https://dig.chouti.com/link/vote?linksId=23851466', headers = headers, cookies = {'gpsd': cook_1.get('gpsd')})
+vote = requests.post(url = 'https://dig.chouti.com/link/vote?linksId=23851466', headers = headers, cookies = {'gpsd': cook_1['gpsd']})
 #打印返回数据
 print(vote.text)
