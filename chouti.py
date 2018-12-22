@@ -4,6 +4,7 @@
 1、抓取首次GET访问主页返回的cookies；
 2、POST访问登录页，需要带上步骤1的cookies，进行授权；
 3、后续点赞等登录后操作，只需要带上步骤1的cookies，步骤2返回的cookies没用；
+注：不表示所有都需要这样操作；
 '''
 import requests
 from bs4 import BeautifulSoup
